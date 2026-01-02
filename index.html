@@ -100,17 +100,26 @@
                 <div class="card">
                     <h3>📌 Today's Events</h3>
                     <div class="entry-list">
-                        <div class="entry">
-                            <span class="time">09:00 AM</span>
-                            <span class="description">Morning workout</span>
+                        <div class="entry" data-event="Morning workout">
+                            <div class="entry-info">
+                                <span class="time">09:00 AM</span>
+                                <span class="description">Morning workout</span>
+                            </div>
+                            <button class="delete-btn-small" onclick="showEventDeleteConfirm(this, 'Morning workout')">🗑️</button>
                         </div>
-                        <div class="entry">
-                            <span class="time">02:00 PM</span>
-                            <span class="description">Team meeting</span>
+                        <div class="entry" data-event="Team meeting">
+                            <div class="entry-info">
+                                <span class="time">02:00 PM</span>
+                                <span class="description">Team meeting</span>
+                            </div>
+                            <button class="delete-btn-small" onclick="showEventDeleteConfirm(this, 'Team meeting')">🗑️</button>
                         </div>
-                        <div class="entry">
-                            <span class="time">07:00 PM</span>
-                            <span class="description">Dinner with family</span>
+                        <div class="entry" data-event="Dinner with family">
+                            <div class="entry-info">
+                                <span class="time">07:00 PM</span>
+                                <span class="description">Dinner with family</span>
+                            </div>
+                            <button class="delete-btn-small" onclick="showEventDeleteConfirm(this, 'Dinner with family')">🗑️</button>
                         </div>
                         <!-- Add more events here -->
                     </div>
@@ -155,21 +164,27 @@
                 <div class="card">
                     <h3>📚 Study Log</h3>
                     <div class="study-list">
-                        <div class="study-entry">
-                            <div class="study-header">
-                                <strong>Web Development</strong>
-                                <span class="study-date">Jan 2, 2026</span>
+                        <div class="study-entry" data-study="Web Development">
+                            <div class="study-content">
+                                <div class="study-header">
+                                    <strong>Web Development</strong>
+                                    <span class="study-date">Jan 2, 2026</span>
+                                </div>
+                                <p>Learned about CSS Grid and Flexbox layouts. Created a responsive calendar design.</p>
+                                <div class="study-duration">⏱️ 2 hours</div>
                             </div>
-                            <p>Learned about CSS Grid and Flexbox layouts. Created a responsive calendar design.</p>
-                            <div class="study-duration">⏱️ 2 hours</div>
+                            <button class="delete-btn-small" onclick="showStudyDeleteConfirm(this, 'Web Development')">🗑️</button>
                         </div>
-                        <div class="study-entry">
-                            <div class="study-header">
-                                <strong>Algorithms</strong>
-                                <span class="study-date">Jan 1, 2026</span>
+                        <div class="study-entry" data-study="Algorithms">
+                            <div class="study-content">
+                                <div class="study-header">
+                                    <strong>Algorithms</strong>
+                                    <span class="study-date">Jan 1, 2026</span>
+                                </div>
+                                <p>Reviewed sorting algorithms: Bubble sort, Quick sort, and Merge sort.</p>
+                                <div class="study-duration">⏱️ 1.5 hours</div>
                             </div>
-                            <p>Reviewed sorting algorithms: Bubble sort, Quick sort, and Merge sort.</p>
-                            <div class="study-duration">⏱️ 1.5 hours</div>
+                            <button class="delete-btn-small" onclick="showStudyDeleteConfirm(this, 'Algorithms')">🗑️</button>
                         </div>
                         <!-- Add more study entries here -->
                     </div>
@@ -183,6 +198,50 @@
             <p>&copy; 2026 Daily Life Tracker. Stay organized, stay productive!</p>
         </div>
     </footer>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Confirm Delete</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete: <strong id="deleteItemName"></strong>?</p>
+                <p class="warning-text">This action cannot be undone!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+                <button class="btn-confirm-delete" onclick="confirmDelete()">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Management Scripts -->
+    <script src="app-api.js"></script>
+    <script src="index-loader.js"></script>
+    
+    <script>
+        let itemToDelete = null;
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+            itemToDelete = null;
+        }
+
+        function confirmDelete() {
+            if (confirmDeleteHome) {
+                confirmDeleteHome();
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('deleteModal');
+            if (event.target === modal) {
+                closeDeleteModal();
+            }
+        }
+    </script>
 </body>
 </html>
 

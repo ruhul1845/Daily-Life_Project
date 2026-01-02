@@ -31,12 +31,27 @@
             <h2 class="page-title">📖 Your History</h2>
             <p class="page-subtitle">View all your past events, skills, and study sessions</p>
 
+            <!-- Search and Filter Section -->
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="🔍 Search by keyword, date, or category..." class="search-input">
+                </div>
+                
+                <div class="date-filter">
+                    <label for="date-from">From:</label>
+                    <input type="date" id="date-from" class="date-input">
+                    <label for="date-to">To:</label>
+                    <input type="date" id="date-to" class="date-input">
+                    <button class="filter-apply-btn">Apply</button>
+                </div>
+            </div>
+
             <!-- Filter Options -->
             <div class="filter-bar">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">Events</button>
-                <button class="filter-btn">Skills</button>
-                <button class="filter-btn">Study</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="event">Events</button>
+                <button class="filter-btn" data-filter="skill">Skills</button>
+                <button class="filter-btn" data-filter="study">Study</button>
             </div>
 
             <!-- Timeline -->
@@ -46,7 +61,7 @@
                     <h3>January 2, 2026 - Thursday</h3>
                 </div>
 
-                <div class="timeline-item event-item">
+                <div class="timeline-item event-item" data-type="event" data-date="2026-01-02">
                     <div class="timeline-marker event-marker">📌</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -55,10 +70,11 @@
                         </div>
                         <h4>Morning workout</h4>
                         <p>Completed 45-minute cardio session at the gym. Feeling energized!</p>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'Morning workout')">🗑️ Delete</button>
                     </div>
                 </div>
 
-                <div class="timeline-item study-item">
+                <div class="timeline-item study-item" data-type="study" data-date="2026-01-02">
                     <div class="timeline-marker study-marker">📚</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -67,10 +83,11 @@
                         </div>
                         <h4>Web Development</h4>
                         <p>Learned about CSS Grid and Flexbox layouts. Created a responsive calendar design using modern CSS techniques. Practiced with real examples.</p>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'Web Development Study')">🗑️ Delete</button>
                     </div>
                 </div>
 
-                <div class="timeline-item skill-item">
+                <div class="timeline-item skill-item" data-type="skill" data-date="2026-01-02">
                     <div class="timeline-marker skill-marker">🎯</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -80,10 +97,11 @@
                         <h4>CSS Grid Layout</h4>
                         <p>Learned how to create complex responsive layouts using CSS Grid. Understanding grid-template-columns, gap, and responsive breakpoints.</p>
                         <span class="skill-level-tag">Intermediate</span>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'CSS Grid Layout Skill')">🗑️ Delete</button>
                     </div>
                 </div>
 
-                <div class="timeline-item event-item">
+                <div class="timeline-item event-item" data-type="event" data-date="2026-01-02">
                     <div class="timeline-marker event-marker">📌</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -92,10 +110,11 @@
                         </div>
                         <h4>Team meeting</h4>
                         <p>Weekly project sync-up. Discussed progress and next steps for the upcoming sprint.</p>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'Team meeting')">🗑️ Delete</button>
                     </div>
                 </div>
 
-                <div class="timeline-item event-item">
+                <div class="timeline-item event-item" data-type="event" data-date="2026-01-02">
                     <div class="timeline-marker event-marker">📌</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -104,6 +123,7 @@
                         </div>
                         <h4>Dinner with family</h4>
                         <p>Quality time with family. Cooked homemade pasta and caught up on everyone's day.</p>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'Dinner with family')">🗑️ Delete</button>
                     </div>
                 </div>
 
@@ -112,7 +132,7 @@
                     <h3>January 1, 2026 - Wednesday</h3>
                 </div>
 
-                <div class="timeline-item study-item">
+                <div class="timeline-item study-item" data-type="study" data-date="2026-01-01">
                     <div class="timeline-marker study-marker">📚</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -121,10 +141,11 @@
                         </div>
                         <h4>Algorithms</h4>
                         <p>Reviewed sorting algorithms: Bubble sort, Quick sort, and Merge sort. Implemented examples in Python and analyzed time complexity.</p>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'Algorithms Study')">🗑️ Delete</button>
                     </div>
                 </div>
 
-                <div class="timeline-item skill-item">
+                <div class="timeline-item skill-item" data-type="skill" data-date="2026-01-01">
                     <div class="timeline-marker skill-marker">🎯</div>
                     <div class="timeline-content">
                         <div class="timeline-header">
@@ -134,6 +155,7 @@
                         <h4>Python Algorithms</h4>
                         <p>Mastered implementation of common sorting algorithms. Now comfortable with recursion and algorithm optimization.</p>
                         <span class="skill-level-tag">Intermediate</span>
+                        <button class="delete-btn" onclick="showDeleteConfirm(this, 'Python Algorithms Skill')">🗑️ Delete</button>
                     </div>
                 </div>
 
@@ -150,6 +172,44 @@
             <p>&copy; 2026 Daily Life Tracker. Stay organized, stay productive!</p>
         </div>
     </footer>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Confirm Delete</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong id="deleteItemName"></strong>?</p>
+                <p class="warning-text">This action cannot be undone!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+                <button class="btn-confirm-delete" onclick="confirmDelete()">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Management Scripts -->
+    <script src="app-api.js"></script>
+    <script src="history-loader.js"></script>
+    
+    <script>
+        let itemToDelete = null;
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+            itemToDelete = null;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('deleteModal');
+            if (event.target === modal) {
+                closeDeleteModal();
+            }
+        }
+    </script>
 </body>
 </html>
 

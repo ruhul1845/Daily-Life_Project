@@ -31,6 +31,13 @@
             <h2 class="page-title">🎯 Daily Skills Overview</h2>
             <p class="page-subtitle">Track your skill development day by day</p>
 
+            <!-- Search Box -->
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <input type="text" id="skill-search" placeholder="🔍 Search skills by name, category, or level..." class="search-input">
+                </div>
+            </div>
+
             <!-- Skills Summary -->
             <div class="stats-grid">
                 <div class="stat-card">
@@ -58,19 +65,21 @@
                         <span class="skills-count">2 skills</span>
                     </div>
                     <div class="skills-grid">
-                        <div class="skill-card">
+                        <div class="skill-card" data-skill="CSS Grid Layout">
                             <div class="skill-icon">🎨</div>
                             <h5>CSS Grid Layout</h5>
                             <p class="skill-category">Programming</p>
                             <p class="skill-desc">Learned how to create complex responsive layouts using CSS Grid. Understanding grid-template-columns and responsive breakpoints.</p>
                             <span class="level-badge intermediate">Intermediate</span>
+                            <button class="delete-btn skill-delete" onclick="showSkillDeleteConfirm(this, 'CSS Grid Layout')">🗑️ Delete</button>
                         </div>
-                        <div class="skill-card">
+                        <div class="skill-card" data-skill="HTML5 Forms">
                             <div class="skill-icon">💻</div>
                             <h5>HTML5 Forms</h5>
                             <p class="skill-category">Programming</p>
                             <p class="skill-desc">Mastered HTML5 form elements, validation attributes, and modern input types for better user experience.</p>
                             <span class="level-badge advanced">Advanced</span>
+                            <button class="delete-btn skill-delete" onclick="showSkillDeleteConfirm(this, 'HTML5 Forms')">🗑️ Delete</button>
                         </div>
                     </div>
                 </div>
@@ -82,12 +91,13 @@
                         <span class="skills-count">1 skill</span>
                     </div>
                     <div class="skills-grid">
-                        <div class="skill-card">
+                        <div class="skill-card" data-skill="Python Algorithms">
                             <div class="skill-icon">🐍</div>
                             <h5>Python Algorithms</h5>
                             <p class="skill-category">Programming</p>
                             <p class="skill-desc">Mastered implementation of common sorting algorithms including Quick Sort and Merge Sort. Comfortable with recursion.</p>
                             <span class="level-badge intermediate">Intermediate</span>
+                            <button class="delete-btn skill-delete" onclick="showSkillDeleteConfirm(this, 'Python Algorithms')">🗑️ Delete</button>
                         </div>
                     </div>
                 </div>
@@ -99,19 +109,21 @@
                         <span class="skills-count">2 skills</span>
                     </div>
                     <div class="skills-grid">
-                        <div class="skill-card">
+                        <div class="skill-card" data-skill="Responsive Design">
                             <div class="skill-icon">📱</div>
                             <h5>Responsive Design</h5>
                             <p class="skill-category">Design</p>
                             <p class="skill-desc">Learned media queries and mobile-first design principles. Created layouts that work on all devices.</p>
                             <span class="level-badge advanced">Advanced</span>
+                            <button class="delete-btn skill-delete" onclick="showSkillDeleteConfirm(this, 'Responsive Design')">🗑️ Delete</button>
                         </div>
-                        <div class="skill-card">
+                        <div class="skill-card" data-skill="JavaScript ES6">
                             <div class="skill-icon">⚡</div>
                             <h5>JavaScript ES6</h5>
                             <p class="skill-category">Programming</p>
                             <p class="skill-desc">Explored modern JavaScript features: arrow functions, destructuring, spread operator, and async/await.</p>
                             <span class="level-badge intermediate">Intermediate</span>
+                            <button class="delete-btn skill-delete" onclick="showSkillDeleteConfirm(this, 'JavaScript ES6')">🗑️ Delete</button>
                         </div>
                     </div>
                 </div>
@@ -119,10 +131,41 @@
                 <!-- Add more daily skills here -->
             </section>
 
-            <!-- Skills by Category -->
-            <section class="category-skills-section">
-                <h3>📊 Skills by Category</h3>
-                <div class="category-list">
+            <!-- Skills Analytics -->
+            <section class="analytics-section">
+                <h3>📊 Skills Analysis</h3>
+                
+                <!-- Pie Chart and Category Bars Side by Side -->
+                <div class="analytics-grid">
+                    <!-- Pie Chart -->
+                    <div class="chart-container">
+                        <h4>Distribution Pie Chart</h4>
+                        <div class="pie-chart-wrapper">
+                            <canvas id="skillsPieChart" width="300" height="300"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #667eea;"></span>
+                                <span class="legend-text">Programming (67%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #764ba2;"></span>
+                                <span class="legend-text">Design (17%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #f093fb;"></span>
+                                <span class="legend-text">Language (8%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #4facfe;"></span>
+                                <span class="legend-text">Business (8%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Progress Bars -->
+                    <div class="category-list">
+                        <h4>Category Progress Bars</h4>
                     <div class="category-item">
                         <div class="category-header">
                             <span class="category-name">💻 Programming</span>
@@ -159,6 +202,7 @@
                             <div class="category-bar" style="width: 15%"></div>
                         </div>
                     </div>
+                    </div>
                 </div>
             </section>
 
@@ -176,6 +220,39 @@
             <p>&copy; 2026 Daily Life Tracker. Stay organized, stay productive!</p>
         </div>
     </footer>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="skillDeleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Confirm Delete</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the skill: <strong id="deleteSkillName"></strong>?</p>
+                <p class="warning-text">This action cannot be undone!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeSkillDeleteModal()">Cancel</button>
+                <button class="btn-confirm-delete" onclick="confirmSkillDelete()">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Management Scripts -->
+    <script src="app-api.js"></script>
+    <script src="skills-loader.js"></script>
+    
+    <script>
+        let skillToDelete = null;
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('skillDeleteModal');
+            if (event.target === modal) {
+                closeSkillDeleteModal();
+            }
+        }
+    </script>
 </body>
 </html>
 
