@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Life - Track Your Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>✨ Daily Life</h1>
+            <p class="tagline">Track Your Events, Skills & Study</p>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">🏠 Home</a></li>
+                <li><a href="write.html">✍️ Write</a></li>
+                <li><a href="history.html">📖 History</a></li>
+                <li><a href="skills.html">🎯 Daily Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="content-grid">
+            <!-- Calendar Section -->
+            <section class="calendar-section">
+                <h2>January 2026</h2>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="day-name">Sun</div>
+                        <div class="day-name">Mon</div>
+                        <div class="day-name">Tue</div>
+                        <div class="day-name">Wed</div>
+                        <div class="day-name">Thu</div>
+                        <div class="day-name">Fri</div>
+                        <div class="day-name">Sat</div>
+                    </div>
+                    <div class="calendar-body">
+                        <!-- Week 1 -->
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day">1</div>
+                        <div class="day today">2<span class="event-dot"></span></div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <!-- Week 2 -->
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9</div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <!-- Week 3 -->
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day">16</div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <!-- Week 4 -->
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <!-- Week 5 -->
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                        <div class="day">31</div>
+                        <div class="day empty"></div>
+                    </div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="dot today-dot"></span> Today
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot event-dot"></span> Has Events
+                    </div>
+                </div>
+            </section>
+
+            <!-- Daily Tracking Section -->
+            <section class="tracking-section">
+                <!-- Today's Events -->
+                <div class="card">
+                    <h3>📌 Today's Events</h3>
+                    <div class="entry-list">
+                        <div class="entry">
+                            <span class="time">09:00 AM</span>
+                            <span class="description">Morning workout</span>
+                        </div>
+                        <div class="entry">
+                            <span class="time">02:00 PM</span>
+                            <span class="description">Team meeting</span>
+                        </div>
+                        <div class="entry">
+                            <span class="time">07:00 PM</span>
+                            <span class="description">Dinner with family</span>
+                        </div>
+                        <!-- Add more events here -->
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="card">
+                    <h3>🎯 Skills Progress</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">HTML/CSS</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-level">Beginner</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <!-- Add more skills here -->
+                    </div>
+                </div>
+
+                <!-- Study Section -->
+                <div class="card">
+                    <h3>📚 Study Log</h3>
+                    <div class="study-list">
+                        <div class="study-entry">
+                            <div class="study-header">
+                                <strong>Web Development</strong>
+                                <span class="study-date">Jan 2, 2026</span>
+                            </div>
+                            <p>Learned about CSS Grid and Flexbox layouts. Created a responsive calendar design.</p>
+                            <div class="study-duration">⏱️ 2 hours</div>
+                        </div>
+                        <div class="study-entry">
+                            <div class="study-header">
+                                <strong>Algorithms</strong>
+                                <span class="study-date">Jan 1, 2026</span>
+                            </div>
+                            <p>Reviewed sorting algorithms: Bubble sort, Quick sort, and Merge sort.</p>
+                            <div class="study-duration">⏱️ 1.5 hours</div>
+                        </div>
+                        <!-- Add more study entries here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Daily Life Tracker. Stay organized, stay productive!</p>
+        </div>
+    </footer>
+</body>
+</html>
+

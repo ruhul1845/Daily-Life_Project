@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write - Daily Life</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>✨ Daily Life</h1>
+            <p class="tagline">Track Your Events, Skills & Study</p>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="write.html" class="active">✍️ Write</a></li>
+                <li><a href="history.html">📖 History</a></li>
+                <li><a href="skills.html">🎯 Daily Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="write-container">
+            <h2 class="page-title">✍️ Write Your Daily Entry</h2>
+            <p class="page-subtitle">Document your events, skills, and progress for today</p>
+
+            <!-- Daily Event Form -->
+            <section class="write-card">
+                <h3>📝 Daily Event</h3>
+                <form class="write-form">
+                    <div class="form-group">
+                        <label for="event-date">Date</label>
+                        <input type="date" id="event-date" name="event-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-time">Time</label>
+                        <input type="time" id="event-time" name="event-time" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-title">Event Title</label>
+                        <input type="text" id="event-title" name="event-title" placeholder="e.g., Morning workout, Team meeting" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-description">Event Description</label>
+                        <textarea id="event-description" name="event-description" rows="4" placeholder="Write details about your event..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Add Event</button>
+                </form>
+            </section>
+
+            <!-- New Skill Form -->
+            <section class="write-card">
+                <h3>🎯 New Skill Learned</h3>
+                <form class="write-form">
+                    <div class="form-group">
+                        <label for="skill-date">Date</label>
+                        <input type="date" id="skill-date" name="skill-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill-name">Skill Name</label>
+                        <input type="text" id="skill-name" name="skill-name" placeholder="e.g., CSS Grid, Python Functions" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill-category">Category</label>
+                        <select id="skill-category" name="skill-category" required>
+                            <option value="">Select category...</option>
+                            <option value="programming">Programming</option>
+                            <option value="design">Design</option>
+                            <option value="language">Language</option>
+                            <option value="business">Business</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill-level">Proficiency Level</label>
+                        <select id="skill-level" name="skill-level" required>
+                            <option value="">Select level...</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill-description">What Did You Learn?</label>
+                        <textarea id="skill-description" name="skill-description" rows="4" placeholder="Describe what you learned about this skill..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Add Skill</button>
+                </form>
+            </section>
+
+            <!-- Study Log Form -->
+            <section class="write-card">
+                <h3>📚 Study Session</h3>
+                <form class="write-form">
+                    <div class="form-group">
+                        <label for="study-date">Date</label>
+                        <input type="date" id="study-date" name="study-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="study-subject">Subject/Topic</label>
+                        <input type="text" id="study-subject" name="study-subject" placeholder="e.g., Web Development, Mathematics" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="study-duration">Duration (hours)</label>
+                        <input type="number" id="study-duration" name="study-duration" min="0" step="0.5" placeholder="2.5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="study-notes">Study Notes</label>
+                        <textarea id="study-notes" name="study-notes" rows="6" placeholder="What did you study? Key takeaways, important concepts, resources used..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Add Study Log</button>
+                </form>
+            </section>
+
+            <!-- Quick Instructions -->
+            <section class="instructions-card">
+                <h3>💡 How to Use</h3>
+                <ul>
+                    <li><strong>Daily Event:</strong> Record scheduled activities, appointments, or important happenings</li>
+                    <li><strong>New Skill:</strong> Track new skills you're learning with details about your progress</li>
+                    <li><strong>Study Session:</strong> Log your study time and what you learned</li>
+                    <li><strong>After Submitting:</strong> Your entries will appear in the History section and on the calendar</li>
+                </ul>
+                <p class="note">📝 <em>Note: Fill out the forms and click submit. You can view all your entries in the History page.</em></p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Daily Life Tracker. Stay organized, stay productive!</p>
+        </div>
+    </footer>
+</body>
+</html>
+
